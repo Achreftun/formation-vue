@@ -11,7 +11,7 @@
     </ul>
 </template>
 <script>
-import VilleComponent from './VilleComponent.vue';
+import VilleComponent from '../components/VilleComponent.vue';
 
 
 export default {

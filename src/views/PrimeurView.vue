@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import ProduitComponent from './ProduitComponent.vue';
+import ProduitComponent from '../components/ProduitComponent.vue';
 
 export default {
     components: {

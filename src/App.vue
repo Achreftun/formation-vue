@@ -1,45 +1,22 @@
 <template>
-  <h1>Pays : {{ pays }} recieved</h1>
-  <img alt="Vue logo" class="logo" src="./assets/vue.svg">
-  <img alt="Vite logo" class="logo" src="/vite.svg">
-  <HelloWorld ville="Lille" code-postal="59000" @send-data="displayCountry" />
-  <HelloWorld>John </HelloWorld>
-  <PrimeurComponent></PrimeurComponent>
-  <PaysComponent />
-  <ReactiveValue />
+  <HeaderComponent />
+  <NavComponent />
+  <router-view />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-import PaysComponent from './components/PaysComponent.vue';
-import PrimeurComponent from './components/PrimeurComponent.vue';
-import ReactiveValue from './components/ReactiveValue.vue';
+import HeaderComponent from './components/HeaderComponent.vue';
+import NavComponent from './components/NavComponent.vue';
+
+
 
 export default {
   name: 'App',
   components: {
-    HelloWorld,
-    PrimeurComponent,
-    PaysComponent,
-    ReactiveValue
-  },
-  data() {
-    return {
-      pays: ''
-    }
-  },
-  methods: {
-    displayCountry(param) {
-      this.pays = param
-    }
+    HeaderComponent,
+    NavComponent
   }
+
 }
 </script>
 
-<style scoped>
-.logo {
-  height: 6em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-</style>
