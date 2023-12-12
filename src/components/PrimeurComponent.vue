@@ -7,8 +7,8 @@
         <button @click="ajouterProduit">Ajouter</button>
     </div>
     <ul>
-        <template v-for="elt in produits">
-            <ProduitComponent :produit="elt"></ProduitComponent>
+        <template v-for="(elt, ind) in produits">
+            <ProduitComponent :produit="elt" @send-data="calculer(ind, $event)"></ProduitComponent>
         </template>
     </ul>
 </template>
@@ -35,8 +35,17 @@ export default {
         ajouterProduit() {
             this.produits.push(this.produit)
             this.produit = {}
+        },
+        calculer(ind, qte) {
+            this.total += qte * this.produits[ind].prix
         }
     },
+    created() {
+        console.log('created');
+    },
+    mounted() {
+        console.log('mounted');
+    }
 }
 </script>
 

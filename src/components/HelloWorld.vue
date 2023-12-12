@@ -5,7 +5,7 @@
     from {{ ville }} - {{ codePostal }}
   </div>
   <div>
-    <input type="text" v-model="pays">
+    <input type="text" v-model="pays" ref="country">
     <button @click="envoyer">Envoyer au parent</button>
   </div>
 </template>
@@ -34,7 +34,10 @@ export default {
       this.$emit('sendData', this.pays)
     }
   },
-  emits: ['sendData']
+  emits: ['sendData'],
+  mounted() {
+    this.$refs.country.focus()
+  }
 
 }
 </script>
