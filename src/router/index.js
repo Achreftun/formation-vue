@@ -26,16 +26,17 @@ const routes = [
         name: 'about'
     },
     {
+        path: '/adresse',
+        component: () => import('../views/AdresseView.vue'),
+        name: 'adresse'
+    },
+    {
         path: '/adresse/:ville/:cp',
         redirect: to => {
             return { name: 'adresse', query: { ...to.params }, params: {} }
         }
     },
-    {
-        path: '/adresse',
-        component: () => AdresseView,
-        name: 'adresse'
-    },
+
 
     {
         path: '/primeur',
