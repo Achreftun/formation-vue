@@ -1,5 +1,5 @@
 <template >
-    <PersonneAdd />
+    <PersonneAjouter />
     <h1>Liste de personnes</h1>
     <ul>
         <li v-for="elt in personnes">
@@ -11,12 +11,12 @@
     </ul>
 </template>
 <script>
-import PersonneAdd from '../components/PersonneAdd.vue';
+import PersonneAjouter from '../components/PersonneAjouter.vue';
 
 
 export default {
     components: {
-        PersonneAdd
+        PersonneAjouter
     },
     data() {
         return {
