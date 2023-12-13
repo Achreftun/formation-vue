@@ -6,7 +6,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 
 const counter = ref(0)
 const incrementer = () => {
@@ -15,21 +15,8 @@ const incrementer = () => {
 const decrementer = () => {
     counter.value--
 }
+
+onMounted(() => {
+    console.log('mounted');
+})
 </script>
-<!-- <script>
-export default {
-    data() {
-        return {
-            counter: 0
-        }
-    },
-    methods: {
-        incrementer() {
-            this.counter++
-        },
-        decrementer() {
-            this.counter--
-        }
-    }
-}
-</script> -->
