@@ -1,6 +1,6 @@
 <template >
     <h1>Ajouter une nouvelle personne</h1>
-    <Form @submit="ajouterPersonne">
+    <Form @submit="ajouterPersonne" :initial-values="valeurs" @invalid-submit="afficherDetails">
         <div>
             <label for="nom">Nom</label>
             <Field type="text" id="nom" name="nom" :rules="validateString" />
@@ -27,7 +27,16 @@ export default {
     components: {
         Field, Form, ErrorMessage
     },
+    data() {
+        return {
+            valeurs: { nom: 'Wick', prenom: 'John', age: 45 }
+        }
+    },
     methods: {
+        afficherDetails({ values }) {
+            console.log("invalid-submit");
+            console.log(values);
+        },
         ajouterPersonne(values, actions) {
             console.log(values);
             actions.resetForm()
