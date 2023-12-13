@@ -1,24 +1,25 @@
 import { defineStore } from "pinia";
+import { reactive, computed } from "vue";
 
-export const useProduitStore = defineStore('produits', {
-    state() {
-        return {
-            lignesCommandes: []
-        }
-    },
-    getters: {
-        nombreProduits(state) {
-            return state.lignesCommandes.length
-        },
-        quantiteTotaleReservee(state) {
-            return state.lignesCommandes
-                .map(p => p.quantiteReservee) // tableau de quantité
-                .reduce((prev, curr) => prev + curr, 0)
-        }
-    },
-    actions: {
-        supprimerLigneCommande(nom) {
-            this.lignesCommandes = this.lignesCommandes.filter(elt => elt.produit.nom != nom)
-        }
+export const useProduitStore = defineStore('produits', () => {
+    // state => ref ou reactive
+    let lignesCommandes = reactive([])
+
+    // getters => computed
+    const nombreProduits = computed(() => lignesCommandes.length)
+    const quantiteTotaleReservee = computed(() => {
+        return lignesCommandes
+            .map(p => p.quantiteReservee) // tableau de quantité
+            .reduce((prev, curr) => prev + curr, 0)
+    })
+
+    // actions : arrow function
+
+    function supprimerLigneCommande(ind) {
+        lignesCommandes.splice(ind, 1)
+    }
+
+    return {
+        lignesCommandes, nombreProduits, quantiteTotaleReservee, supprimerLigneCommande
     }
 })

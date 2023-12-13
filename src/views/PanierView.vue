@@ -1,9 +1,9 @@
 <template >
     <h1>Panier</h1>
     <ul>
-        <li v-for="elt in produitStore.lignesCommandes">
+        <li v-for="(elt, ind) in produitStore.lignesCommandes">
             {{ elt.produit.nom }} {{ elt.quantiteReservee }}
-            <button @click="supprimer(elt.produit.nom)">
+            <button @click="supprimer(ind)">
                 supprimer
             </button>
         </li>
@@ -13,5 +13,5 @@
 <script setup>
 import { useProduitStore } from '../stores/produits.js'
 const produitStore = useProduitStore()
-const supprimer = (nom) => produitStore.supprimerLigneCommande(nom) 
+const supprimer = (ind) => produitStore.supprimerLigneCommande(ind) 
 </script>
