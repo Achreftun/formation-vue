@@ -7,25 +7,21 @@
     </ul>
 </template>
 <script>
+import axios from 'axios'
+
 export default {
     props: ['id'],
     data() {
         return {
-            personnes: [
-                { id: 1, nom: 'Wick', prenom: 'John', age: 45 },
-                { id: 2, nom: 'Dalton', prenom: 'Jack', age: 40 },
-                { id: 3, nom: 'Dupont', prenom: 'Sophie', age: 30 }
-            ]
+            personne: {}
         }
     },
-    computed: {
-        // id() {
-        //     return this.$route.params.id
-        // },
-        personne() {
-            return this.personnes.find(elt => elt.id == this.id)
-        }
-    },
+    mounted() {
+        axios
+            .get(`${this.BASE_URL}/personnes/${id}`)
+            .then(res => this.personne = res.data)
+    }
+
 }
 </script>
 <style ></style>

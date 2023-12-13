@@ -23,7 +23,10 @@ configure({
 })
 
 
-createApp(App)
-   // .component('HelloWorld', HelloWorld)
-   .use(router)
+const app = createApp(App)
+
+app.config.globalProperties.BASE_URL = 'http://localhost:5555'
+
+// .component('HelloWorld', HelloWorld)
+app.use(router)
    .mount('#app')

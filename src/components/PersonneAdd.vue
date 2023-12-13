@@ -1,6 +1,6 @@
 <template >
     <h1>Ajouter une nouvelle personne</h1>
-    <Form @submit="ajouterPersonne" :initial-values="valeurs" @invalid-submit="afficherDetails">
+    <Form @submit="ajouterPersonne" @invalid-submit="afficherDetails">
         <div>
             <label for="nom">Nom</label>
             <Field type="text" id="nom" name="nom" :rules="validateString" />
@@ -22,6 +22,7 @@
     </Form>
 </template>
 <script>
+import axios from 'axios'
 import { Field, Form, ErrorMessage } from 'vee-validate'
 export default {
     components: {
@@ -38,8 +39,12 @@ export default {
             console.log(values);
         },
         ajouterPersonne(values, actions) {
-            console.log(values);
-            actions.resetForm()
+            axios
+                .post(`${this.BASE_URL}/personnes`, values)
+                .then((res) => {
+                    this.$emit('sendPersonne', res.data)
+                    actions.resetForm()
+                })
         },
         validateString(valeur) {
             if (!valeur) {
@@ -62,7 +67,8 @@ export default {
         //     }
         //     return true
         // }
-    }
+    },
+    emits: ["sendPersonne"]
 }
 </script>
 <style ></style>
