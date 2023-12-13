@@ -6,6 +6,7 @@ import { createRouter, createWebHistory } from "vue-router"
 // import ReactiveValue from '../views/ReactiveValue.vue'
 // import PaysView from '../views/PaysView.vue'
 import AdresseView from '../views/AdresseView.vue'
+// import CompteurView from '../views/CompteurView.vue'
 // import PersonneView from '../views/PersonneView.vue'
 // import PersonneDetails from '../views/PersonneDetails.vue'
 // import CalculView from '../views/CalculView.vue'
@@ -50,6 +51,11 @@ const routes = [
         path: '/pays',
         component: () => import('../views/PaysView.vue'),
         name: 'pays'
+    },
+    {
+        path: '/compteur',
+        component: () => import('../views/CompteurView.vue'),
+        name: 'compteur'
     },
     {
         path: '/personne',
