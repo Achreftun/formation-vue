@@ -3,32 +3,19 @@
         {{ valeur1 }} + {{ valeur2 }} = {{ resultat }}
     </div>
 </template>
-<script>
+<script setup>
+import { ref, onMounted, computed } from 'vue'
 
-export default {
-    data() {
-        return {
-            valeur1: 5,
-            valeur2: 2,
-        }
-    },
-    computed: {
-        // getter
-        resultat() {
-            return this.valeur1 + this.valeur2
-        }
-    },
-    // created() {
-    //     // watchEffect(() => {
-    //     //     this.resultat = this.valeur1 + this.valeur2
-    //     // })
-    //     this.resultat = computed(() => this.valeur1 + this.valeur2)
-    // },
-    mounted() {
-        setInterval(
-            () => this.valeur1 += 10,
-            2000
-        )
-    }
-}
+const valeur1 = ref(5)
+const valeur2 = ref(2)
+
+const resultat = computed(() => valeur1.value + valeur2.value)
+
+onMounted(() => {
+    setInterval(
+        () => valeur1.value += 10,
+        2000
+    )
+})
+
 </script>

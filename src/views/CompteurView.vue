@@ -1,20 +1,31 @@
 <template>
-    <h1>Compteur </h1>
+    <h1>Compteur : {{ counter.etat }}</h1>
     <button @click="decrementer">-</button>
-    {{ counter }}
+    {{ counter.valeur }}
     <button @click="incrementer">+</button>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
-
-const counter = ref(0)
+import { reactive, onMounted, onUpdated } from 'vue'
+// valeurs réactives : ref, reactive
+const compteur = { valeur: 0, etat: 'nul' }
+const counter = reactive(compteur)
 const incrementer = () => {
-    counter.value++
+    counter.valeur++
 }
 const decrementer = () => {
-    counter.value--
+    counter.valeur--
 }
+onUpdated(() => {
+    if (counter.valeur > 0) {
+        counter.etat = 'positif'
+    } else if (counter.valeur < 0) {
+        counter.etat = 'négatif'
+    } else {
+        counter.etat = 'nul'
+    }
+})
+
 
 onMounted(() => {
     console.log('mounted');
