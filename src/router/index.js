@@ -26,6 +26,11 @@ const routes = [
         name: 'about'
     },
     {
+        path: '/panier',
+        component: () => import('../views/PanierView.vue'),
+        name: 'panier'
+    },
+    {
         path: '/adresse',
         component: () => import('../views/AdresseView.vue'),
         name: 'adresse'
