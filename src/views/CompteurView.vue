@@ -5,23 +5,15 @@
     <button @click="incrementer">+</button>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue'
-export default {
-    setup() {
-        // valeur réactive : ref
-        // counter = { value: 0}
-        const counter = ref(0)
-        const incrementer = () => {
-            counter.value++
-        }
-        const decrementer = () => {
-            counter.value--
-        }
-        return {
-            counter, incrementer, decrementer
-        }
-    }
+
+const counter = ref(0)
+const incrementer = () => {
+    counter.value++
+}
+const decrementer = () => {
+    counter.value--
 }
 </script>
 <!-- <script>
